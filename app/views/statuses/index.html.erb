@@ -1,0 +1,9 @@
+  <%= link_to "ツイート", new_status_path, class: 'btn btn-primary' %>
+
+  <% content_for :title, "Statuses" %>
+
+  <div id="statuses" class='d-flex flex-column gap-3 mt-3'>
+    <% @statuses.each do |status| %>
+      <%= render status %>
+    <% end %>
+  </div>

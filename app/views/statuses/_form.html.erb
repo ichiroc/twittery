@@ -1,0 +1,21 @@
+<%= form_with(model: status) do |form| %>
+  <% if status.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(status.errors.count, "error") %> prohibited this status from being saved:</h2>
+
+      <ul>
+        <% status.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.text_area :content, class: 'form-control', placeholder: '何をしていますか？' %>
+  </div>
+
+  <div>
+    <%= form.submit class: 'btn btn-primary mt-3' %>
+  </div>
+<% end %>
