@@ -39,10 +39,11 @@ builder:
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 #
 env:
-#   clear:
-#     DB_HOST: 192.168.0.2
+  clear:
+    DB_HOST: 160.16.81.51
   secret:
     - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
 # "bin/kamal logs -r job" will tail logs from the first server in the job section.
@@ -95,3 +96,18 @@ asset_path: /rails/public/assets
 #     port: 6379
 #     directories:
 #       - data:/data
+
+accessories:
+  db:
+    image: postgres:16-alpine
+    host: 160.16.81.51
+    port: 5432
+    env:
+      clear:
+        POSTGRES_USER: twittery
+      secret:
+        - POSTGRES_PASSWORD
+    files:
+      - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
+    directories:
+      - data:/var/lib/postgresql/data
