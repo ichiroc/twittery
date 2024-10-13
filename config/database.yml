@@ -29,6 +29,7 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
+  host: <%= ENV['DB_HOST'] %>
   username: twittery
   password: <%= ENV['POSTGRES_PASSWORD'] %>
   database: storage/production.sqlite3
