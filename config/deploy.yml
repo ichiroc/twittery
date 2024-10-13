@@ -107,7 +107,5 @@ accessories:
         POSTGRES_USER: twittery
       secret:
         - POSTGRES_PASSWORD
-    files:
-      - db/production.sql:/docker-entrypoint-initdb.d/setup.sql
     directories:
       - data:/var/lib/postgresql/data
