@@ -32,4 +32,4 @@ production:
   host: <%= ENV['DB_HOST'] %>
   username: twittery
   password: <%= ENV['POSTGRES_PASSWORD'] %>
-  database: storage/production.sqlite3
+  database: twittery_production
