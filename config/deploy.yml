@@ -7,7 +7,11 @@ image: ichiroc/twittery
 # Deploy to these servers.
 servers:
   web:
-    - v160-251-174-120.melq.static.cnode.jp.
+    hosts:
+      - v160-251-174-120.melq.static.cnode.jp.
+    env:
+      TLS_DOMAIN: twittery.ichiroc.in
+
   # job:
   #   hosts:
   #     - 192.168.0.1
