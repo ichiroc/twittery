@@ -79,5 +79,9 @@ USER 1000:1000
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
+ENV HTTP_PORT="3000" \
+    TARGET_PORT="3001"
+
 EXPOSE 3000
-CMD ["thrust", "bin/rails", "server"]
+
+CMD ["bundle", "exec", "thrust", "./bin/rails", "server"]
