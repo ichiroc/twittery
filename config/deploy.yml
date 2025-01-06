@@ -7,7 +7,11 @@ image: ichiroc/twittery
 # Deploy to these servers.
 servers:
   web:
-    - v160-251-174-120.melq.static.cnode.jp.
+    hosts:
+      - twittery.ichiroc.in
+    env:
+      TLS_DOMAIN: twittery.ichiroc.in
+
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -39,10 +43,9 @@ builder:
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 #
 env:
-  clear:
-    DB_HOST: v160-251-174-120.melq.static.cnode.jp
   secret:
     - RAILS_MASTER_KEY
+    - DATABASE_URL
     - POSTGRES_PASSWORD
 
 # Aliases are triggered with "bin/kamal <alias>". You can overwrite arguments on invocation:
@@ -56,7 +59,7 @@ env:
 ssh:
   user: kamal
   keys_only: true
-  keys: ["/Users/ichiro/.ssh/ids/conoha_id"]
+  keys: ["/Users/ichiro/.ssh/id_kamal"]
 
 # Use a persistent storage volume.
 #
@@ -102,7 +105,7 @@ asset_path: /rails/public/assets
 accessories:
   db:
     image: postgres:16-alpine
-    host: v160-251-174-120.melq.static.cnode.jp.
+    host: twittery.ichiroc.in
     port: 5432
     env:
       clear:
