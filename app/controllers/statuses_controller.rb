@@ -25,7 +25,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to statuses_path, notice: "Status was successfully created." }
+        format.html { redirect_to statuses_path, notice: "作成しました." }
         format.json { render :show, status: :created, location: @status }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class StatusesController < ApplicationController
   def update
     respond_to do |format|
       if @status.update(status_params)
-        format.html { redirect_to @status, notice: "Status was successfully updated." }
+        format.html { redirect_to @status, notice: "更新しました" }
         format.json { render :show, status: :ok, location: @status }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class StatusesController < ApplicationController
     @status.destroy!
 
     respond_to do |format|
-      format.html { redirect_to statuses_path, status: :see_other, notice: "Status was successfully destroyed." }
+      format.html { redirect_to statuses_path, status: :see_other, notice: "削除しました" }
       format.json { head :no_content }
     end
   end

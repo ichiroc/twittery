@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @status %>
 
-<div>
-  <%= link_to "Edit this status", edit_status_path(@status) %> |
-  <%= link_to "Back to statuses", statuses_path %>
-
-  <%= button_to "Destroy this status", @status, method: :delete %>
+<div class="d-flex">
+  <%= link_to "編集", edit_status_path(@status), class: 'btn btn-link' %>
+  <%= button_to "削除", @status, method: :delete, class: 'btn btn-link text-danger', data: { turbo_confirm: 'よろしいですか？' } %>
 </div>
